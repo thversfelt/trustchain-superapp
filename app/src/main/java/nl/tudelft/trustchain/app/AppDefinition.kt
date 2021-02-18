@@ -7,6 +7,7 @@ import com.example.musicdao.MusicService
 import nl.tudelft.trustchain.FOC.MainActivityFOC
 import nl.tudelft.trustchain.common.R
 import nl.tudelft.trustchain.currencyii.CurrencyIIMainActivity
+import nl.tudelft.trustchain.liquiditypooling.LiquidityPoolingMainActivity
 import nl.tudelft.trustchain.debug.DebugActivity
 import nl.tudelft.trustchain.distributedAI.DistributedActivity
 import nl.tudelft.trustchain.eurotoken.EuroTokenMainActivity
@@ -45,6 +46,12 @@ enum class AppDefinition(
         "Luxury Communism",
         R.color.metallic_gold,
         CurrencyIIMainActivity::class.java
+    ),
+    LIQUIDITY_POOLING(
+        R.drawable.ic_bitcoin,
+        "Liquidity Pooling",
+        R.color.blue,
+        LiquidityPoolingMainActivity::class.java
     ),
     TRUSTCHAIN_TRADER(
         R.drawable.ic_device_hub_black_24dp,

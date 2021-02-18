@@ -63,6 +63,10 @@
             android:parentActivityName=".ui.dashboard.DashboardActivity" />
 
         <activity
+            android:name="nl.tudelft.trustchain.liquiditypooling.LiquidityPoolingMainActivity"
+            android:parentActivityName=".ui.dashboard.DashboardActivity" />
+
+        <activity
             android:name="nl.tudelft.trustchain.eurotoken.EuroTokenMainActivity"
             android:parentActivityName=".ui.dashboard.DashboardActivity"
             android:theme="@style/Theme.PeerChat" />
