@@ -8,7 +8,7 @@ import nl.tudelft.trustchain.common.BaseActivity
 class LiquidityPoolingMainActivity : BaseActivity() {
     private var topLevelDestinationIds = setOf(R.id.blockchainDownloadFragment, R.id.daoLoginChoice)
 
-    override val navigationGraph = R.navigation.nav_graph
+    override val navigationGraph = R.navigation.nav_graph_liquiditypooling
     override val bottomNavigationMenu = R.menu.liquiditypooling_bottom_navigation_menu
 
     override val appBarConfiguration by lazy {

@@ -15,7 +15,7 @@ import org.bitcoinj.core.Transaction
 
 @Suppress("UNCHECKED_CAST")
 class PoolCommunity : Community() {
-    override val serviceId = "02313685c1912a141279f8248fc8db5899c5df5b"
+    override val serviceId = "02313685c1912a141279f8248fc8db5899000000"
 
     private fun getTrustChainCommunity(): TrustChainCommunity {
         return IPv8Android.getInstance().getOverlay()
