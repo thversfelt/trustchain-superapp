@@ -74,12 +74,12 @@ class SharedWalletTransaction : BaseFragment(R.layout.fragment_shared_wallet_tra
         val bitcoinPublicKey = input_bitcoin_public_key.text.toString()
         val satoshiTransferAmount = input_satoshi_amount.text.toString().toLong()
         val swJoinBlock: TrustChainBlock =
-            getCoinCommunity().fetchLatestSharedWalletBlock(blockHash!!)
+            getPoolCommunity().fetchLatestSharedWalletBlock(blockHash!!)
                 ?: throw IllegalStateException("Shared Wallet not found given the hash: ${blockHash!!}")
         val walletData = SWJoinBlockTransactionData(swJoinBlock.transaction).getData()
 
         val transferFundsData = try {
-            getCoinCommunity().proposeTransferFunds(
+            getPoolCommunity().proposeTransferFunds(
                 swJoinBlock,
                 bitcoinPublicKey,
                 satoshiTransferAmount
@@ -97,7 +97,7 @@ class SharedWalletTransaction : BaseFragment(R.layout.fragment_shared_wallet_tra
 
         val signatures = collectSignatures(transferFundsData)
         try {
-            getCoinCommunity().transferFunds(
+            getPoolCommunity().transferFunds(
                 transferFundsData,
                 walletData,
                 signatures,
@@ -153,7 +153,7 @@ class SharedWalletTransaction : BaseFragment(R.layout.fragment_shared_wallet_tra
     ): List<String>? {
         val blockData = data.getData()
         val signatures =
-            getCoinCommunity().fetchProposalSignatures(
+            getPoolCommunity().fetchProposalSignatures(
                 blockData.SW_UNIQUE_ID,
                 blockData.SW_UNIQUE_PROPOSAL_ID
             )

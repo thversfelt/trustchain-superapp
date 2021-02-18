@@ -1,6 +1,6 @@
 # Trustchain Message Types
 
-The data is stored as a stringified `JSON`. The `JSON` contains data, which is displayed in the tables below. The [Gson](https://github.com/google/gson) library is used for serializion and deserialization. The block `types` are constants defined in `CoinCommunity.kt`.
+The data is stored as a stringified `JSON`. The `JSON` contains data, which is displayed in the tables below. The [Gson](https://github.com/google/gson) library is used for serializion and deserialization. The block `types` are constants defined in `PoolCommunity.kt`.
 
 **Declared in: `SWJoinBlockTransactionData.kt`**
 **Type: `SHARED_WALLET_BLOCK`**

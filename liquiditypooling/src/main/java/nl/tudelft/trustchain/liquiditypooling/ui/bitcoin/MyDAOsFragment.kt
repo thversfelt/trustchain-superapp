@@ -42,7 +42,7 @@ class MyDAOsFragment : BaseFragment(R.layout.fragment_my_daos) {
             Log.i("Coin", "Go to create DAO from My DAOs")
             findNavController().navigate(R.id.createSWFragment)
         }
-        val sharedWalletBlocks = getCoinCommunity().fetchLatestJoinedSharedWalletBlocks()
+        val sharedWalletBlocks = getPoolCommunity().fetchLatestJoinedSharedWalletBlocks()
         val publicKey = getTrustChainCommunity().myPeer.publicKey.keyToBin().toHex()
         val adapter =
             SharedWalletListAdapter(

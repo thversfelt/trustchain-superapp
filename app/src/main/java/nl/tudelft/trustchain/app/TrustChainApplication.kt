@@ -36,6 +36,7 @@ import nl.tudelft.trustchain.common.MarketCommunity
 import nl.tudelft.trustchain.common.eurotoken.GatewayStore
 import nl.tudelft.trustchain.common.eurotoken.TransactionRepository
 import nl.tudelft.trustchain.currencyii.CoinCommunity
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity
 import nl.tudelft.trustchain.eurotoken.community.EuroTokenCommunity
 import nl.tudelft.trustchain.peerchat.community.PeerChatCommunity
 import nl.tudelft.trustchain.peerchat.db.PeerChatStore
@@ -61,6 +62,7 @@ class TrustChainApplication : Application() {
                 createDemoCommunity(),
                 createMarketCommunity(),
                 createCoinCommunity(),
+                createPoolCommunity(),
                 createVotingCommunity(),
                 createMusicCommunity()
             ), walkerInterval = 5.0
@@ -116,6 +118,18 @@ class TrustChainApplication : Application() {
         })
 
         trustchain.addListener(CoinCommunity.SIGNATURE_ASK_BLOCK, object : BlockListener {
+            override fun onBlockReceived(block: TrustChainBlock) {
+                Log.d("Coin", "onBlockReceived: ${block.blockId} ${block.transaction}")
+            }
+        })
+
+        trustchain.addListener(PoolCommunity.JOIN_BLOCK, object : BlockListener {
+            override fun onBlockReceived(block: TrustChainBlock) {
+                Log.d("Coin", "onBlockReceived: ${block.blockId} ${block.transaction}")
+            }
+        })
+
+        trustchain.addListener(PoolCommunity.SIGNATURE_ASK_BLOCK, object : BlockListener {
             override fun onBlockReceived(block: TrustChainBlock) {
                 Log.d("Coin", "onBlockReceived: ${block.blockId} ${block.transaction}")
             }
@@ -202,6 +216,16 @@ class TrustChainApplication : Application() {
 
         return OverlayConfiguration(
             Overlay.Factory(CoinCommunity::class.java),
+            listOf(randomWalk, nsd)
+        )
+    }
+
+    private fun createPoolCommunity(): OverlayConfiguration<PoolCommunity> {
+        val randomWalk = RandomWalk.Factory()
+        val nsd = NetworkServiceDiscovery.Factory(getSystemService()!!)
+
+        return OverlayConfiguration(
+            Overlay.Factory(PoolCommunity::class.java),
             listOf(randomWalk, nsd)
         )
     }

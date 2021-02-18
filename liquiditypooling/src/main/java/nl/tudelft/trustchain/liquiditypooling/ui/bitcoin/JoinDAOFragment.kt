@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_join_network.*
 import kotlinx.coroutines.*
 import nl.tudelft.ipv8.attestation.trustchain.TrustChainBlock
 import nl.tudelft.ipv8.util.toHex
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity
 import nl.tudelft.trustchain.liquiditypooling.R
 import nl.tudelft.trustchain.liquiditypooling.sharedWallet.SWJoinBlockTransactionData
 import nl.tudelft.trustchain.liquiditypooling.sharedWallet.SWSignatureAskBlockTD
@@ -74,7 +74,7 @@ class JoinDAOFragment() : BaseFragment(R.layout.fragment_join_network) {
             withContext(Dispatchers.IO) {
                 setAlertText("Crawling blocks for DAOs...")
 
-                val discoveredWallets = getCoinCommunity().discoverSharedWallets()
+                val discoveredWallets = getPoolCommunity().discoverSharedWallets()
                 updateSharedWallets(discoveredWallets)
                 updateSharedWalletsUI()
                 crawlAvailableSharedWallets()
@@ -98,7 +98,7 @@ class JoinDAOFragment() : BaseFragment(R.layout.fragment_join_network) {
         val distinctById = newWallets
             .filter {
                 // Make sure that the trust chain block has the correct type
-                it.type == CoinCommunity.JOIN_BLOCK
+                it.type == PoolCommunity.JOIN_BLOCK
             }.distinctBy {
                 SWJoinBlockTransactionData(it.transaction).getData().SW_UNIQUE_ID
             }
@@ -175,12 +175,12 @@ class JoinDAOFragment() : BaseFragment(R.layout.fragment_join_network) {
      */
     fun joinSharedWalletClicked(block: TrustChainBlock) {
         val mostRecentSWBlock =
-            getCoinCommunity().fetchLatestSharedWalletBlock(block.calculateHash())
+            getPoolCommunity().fetchLatestSharedWalletBlock(block.calculateHash())
                 ?: block
 
         // Add a proposal to trust chain to join a shared wallet
         val proposeBlockData = try {
-            getCoinCommunity().proposeJoinWallet(
+            getPoolCommunity().proposeJoinWallet(
                 mostRecentSWBlock
             ).getData()
         } catch (t: Throwable) {
@@ -199,7 +199,7 @@ class JoinDAOFragment() : BaseFragment(R.layout.fragment_join_network) {
         // Create a new shared wallet using the signatures of the others.
         // Broadcast the new shared bitcoin wallet on trust chain.
         try {
-            getCoinCommunity().joinBitcoinWallet(
+            getPoolCommunity().joinBitcoinWallet(
                 mostRecentSWBlock.transaction,
                 proposeBlockData,
                 signatures,
@@ -233,7 +233,7 @@ class JoinDAOFragment() : BaseFragment(R.layout.fragment_join_network) {
         blockData: SWSignatureAskBlockTD
     ): List<String>? {
         val signatures =
-            getCoinCommunity().fetchProposalSignatures(
+            getPoolCommunity().fetchProposalSignatures(
                 blockData.SW_UNIQUE_ID,
                 blockData.SW_UNIQUE_PROPOSAL_ID
             )

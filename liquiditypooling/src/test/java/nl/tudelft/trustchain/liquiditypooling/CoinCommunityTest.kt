@@ -15,7 +15,7 @@ package nl.tudelft.trustchain.liquiditypooling
 // import org.bitcoinj.params.TestNet3Params
 // import org.junit.Test
 
-class CoinCommunityTest {
+class PoolCommunityTest {
 
 //    val ENTRANCE_FEE = 10000L
 
@@ -56,7 +56,7 @@ class CoinCommunityTest {
 //        every { walletManager.attemptToGetTransactionAndSerialize(TX_CREATE_WALLET_ID) } returns TX_CREATE_WALLET_SERIALIZED
 //        every { walletManager.networkPublicECKeyHex() } returns BTC_PK
 //
-//        val coinCommunity = spyk(CoinCommunity(), recordPrivateCalls = true)
+//        val coinCommunity = spyk(PoolCommunity(), recordPrivateCalls = true)
 //        val trustchain = mockk<TrustChainHelper>()
 //        every { coinCommunity.myPeer.publicKey.keyToBin() } returns TRUSTCHAIN_PK.hexToBytes()
 //        every { coinCommunity getProperty "trustchain" } returns trustchain
@@ -69,7 +69,7 @@ class CoinCommunityTest {
 //
 //        // Verify that the trustchain method is called
 //        verify { trustchain.createProposalBlock(any<String>(), TRUSTCHAIN_PK.hexToBytes(),
-//            CoinCommunity.JOIN_BLOCK
+//            PoolCommunity.JOIN_BLOCK
 //        ) }
 //    }
 
@@ -83,7 +83,7 @@ class CoinCommunityTest {
 //        every { walletManager.networkPublicECKeyHex() } returns BTC_PK_2
 //        every { walletManager.params } returns TestNet3Params.get()
 //
-//        val coinCommunity = spyk(CoinCommunity(), recordPrivateCalls = true)
+//        val coinCommunity = spyk(PoolCommunity(), recordPrivateCalls = true)
 //        val trustchain = mockk<TrustChainHelper>()
 //        every { coinCommunity.myPeer.publicKey.keyToBin() } returns TRUSTCHAIN_PK.hexToBytes()
 //        every { coinCommunity getProperty "trustchain" } returns trustchain
@@ -138,7 +138,7 @@ class CoinCommunityTest {
 //        every { walletManager.networkPublicECKeyHex() } returns BTC_PK
 //        every { walletManager.params } returns TestNet3Params.get()
 //
-//        val coinCommunity = spyk(CoinCommunity(), recordPrivateCalls = true)
+//        val coinCommunity = spyk(PoolCommunity(), recordPrivateCalls = true)
 //        val trustchain = mockk<TrustChainHelper>()
 //        every { coinCommunity.myPeer.publicKey.keyToBin() } returns TRUSTCHAIN_PK.hexToBytes()
 //        every { coinCommunity getProperty "trustchain" } returns trustchain
@@ -171,7 +171,7 @@ class CoinCommunityTest {
 //            trustchain.createProposalBlock(
 //                any<String>(),
 //                any(),
-//                CoinCommunity.JOIN_BLOCK
+//                PoolCommunity.JOIN_BLOCK
 //            )
 //        }
 //    }
@@ -186,7 +186,7 @@ class CoinCommunityTest {
 //        every { walletManager.networkPublicECKeyHex() } returns BTC_PK
 //        every { walletManager.params } returns TestNet3Params.get()
 //
-//        val coinCommunity = spyk(CoinCommunity(), recordPrivateCalls = true)
+//        val coinCommunity = spyk(PoolCommunity(), recordPrivateCalls = true)
 //        val trustchain = mockk<TrustChainHelper>()
 //        every { coinCommunity.myPeer.publicKey.keyToBin() } returns TRUSTCHAIN_PK.hexToBytes()
 //        every { coinCommunity getProperty "trustchain" } returns trustchain
@@ -249,7 +249,7 @@ class CoinCommunityTest {
 //        every { walletManager.networkPublicECKeyHex() } returns BTC_PK
 //        every { walletManager.params } returns TestNet3Params.get()
 //
-//        val coinCommunity = spyk(CoinCommunity(), recordPrivateCalls = true)
+//        val coinCommunity = spyk(PoolCommunity(), recordPrivateCalls = true)
 //        val trustchain = mockk<TrustChainHelper>()
 //        every { coinCommunity.myPeer.publicKey.keyToBin() } returns TRUSTCHAIN_PK.hexToBytes()
 //        every { coinCommunity getProperty "trustchain" } returns trustchain
@@ -289,7 +289,7 @@ class CoinCommunityTest {
 //            trustchain.createProposalBlock(
 //                any<String>(),
 //                any(),
-//                CoinCommunity.TRANSFER_FUNDS_ASK_BLOCK
+//                PoolCommunity.TRANSFER_FUNDS_ASK_BLOCK
 //            )
 //        }
 //    }
@@ -304,7 +304,7 @@ class CoinCommunityTest {
 //        every { walletManager.networkPublicECKeyHex() } returns BTC_PK
 //        every { walletManager.params } returns TestNet3Params.get()
 //
-//        val coinCommunity = spyk(CoinCommunity(), recordPrivateCalls = true)
+//        val coinCommunity = spyk(PoolCommunity(), recordPrivateCalls = true)
 //        val trustchain = mockk<TrustChainHelper>()
 //        every { coinCommunity.myPeer.publicKey.keyToBin() } returns TRUSTCHAIN_PK.hexToBytes()
 //        every { coinCommunity getProperty "trustchain" } returns trustchain

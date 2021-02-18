@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
 import nl.tudelft.ipv8.attestation.trustchain.TrustChainBlock
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity
 import nl.tudelft.trustchain.liquiditypooling.R
 import nl.tudelft.trustchain.liquiditypooling.ui.BaseFragment
 
@@ -28,7 +28,7 @@ class MyProposalsFragment : BaseFragment(R.layout.fragment_my_proposals) {
     private fun fetchProposalsAndUpdateUI() {
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                val databaseProposals = getCoinCommunity().fetchProposalBlocks()
+                val databaseProposals = getPoolCommunity().fetchProposalBlocks()
                 Log.i("Coin", "${databaseProposals.size} proposals found in database!")
                 updateProposals(databaseProposals)
                 updateProposalListUI()
@@ -44,18 +44,18 @@ class MyProposalsFragment : BaseFragment(R.layout.fragment_my_proposals) {
             val myPublicKey = getTrustChainCommunity().myPeer.publicKey.keyToBin()
             proposal_list_view.setOnItemClickListener { _, _, position, _ ->
                 val block = proposals[position]
-                if (block.type == CoinCommunity.TRANSFER_FUNDS_ASK_BLOCK) {
+                if (block.type == PoolCommunity.TRANSFER_FUNDS_ASK_BLOCK) {
                     try {
                         Log.i("Coin", "Voted yes on transferring funds of: ${block.transaction}")
-                        getCoinCommunity().transferFundsBlockReceived(block, myPublicKey)
+                        getPoolCommunity().transferFundsBlockReceived(block, myPublicKey)
                     } catch (t: Throwable) {
                         Log.i("Coin", "transfer voting failed: ${t.message ?: "no message"}")
                     }
                 }
-                if (block.type == CoinCommunity.SIGNATURE_ASK_BLOCK) {
+                if (block.type == PoolCommunity.SIGNATURE_ASK_BLOCK) {
                     try {
                         Log.i("Coin", "Voted yes on joining of: ${block.transaction}")
-                        getCoinCommunity().joinAskBlockReceived(block, myPublicKey)
+                        getPoolCommunity().joinAskBlockReceived(block, myPublicKey)
                     } catch (t: Throwable) {
                         Log.i("Coin", "join voting failed: ${t.message ?: "no message"}")
                     }
@@ -68,7 +68,7 @@ class MyProposalsFragment : BaseFragment(R.layout.fragment_my_proposals) {
      * Update the currently stored proposals. Only new and unique proposals are added.
      */
     private fun updateProposals(newProposals: List<TrustChainBlock>) {
-        val coinCommunity = getCoinCommunity()
+        val coinCommunity = getPoolCommunity()
         val proposalIds = proposals.map {
             coinCommunity.fetchSignatureRequestProposalId(it)
         }
@@ -98,8 +98,8 @@ class MyProposalsFragment : BaseFragment(R.layout.fragment_my_proposals) {
                     val crawlResult = trustchain
                         .getChainByUser(peer.publicKey.keyToBin())
                         .filter {
-                            it.type == CoinCommunity.SIGNATURE_ASK_BLOCK ||
-                                it.type == CoinCommunity.TRANSFER_FUNDS_ASK_BLOCK
+                            it.type == PoolCommunity.SIGNATURE_ASK_BLOCK ||
+                                it.type == PoolCommunity.TRANSFER_FUNDS_ASK_BLOCK
                         }
                     Log.i(
                         "Coin",

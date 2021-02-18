@@ -7,7 +7,7 @@ import nl.tudelft.ipv8.IPv8
 import nl.tudelft.ipv8.android.IPv8Android
 import nl.tudelft.ipv8.attestation.trustchain.TrustChainCommunity
 import nl.tudelft.trustchain.common.DemoCommunity
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity
 import nl.tudelft.trustchain.liquiditypooling.R
 import nl.tudelft.trustchain.liquiditypooling.TrustChainHelper
 
@@ -30,9 +30,9 @@ abstract class BaseFragment(@LayoutRes contentLayoutId: Int = 0) : Fragment(cont
             ?: throw IllegalStateException("DemoCommunity is not configured")
     }
 
-    protected fun getCoinCommunity(): CoinCommunity {
+    protected fun getPoolCommunity(): PoolCommunity {
         return getIpv8().getOverlay()
-            ?: throw IllegalStateException("CoinCommunity is not configured")
+            ?: throw IllegalStateException("PoolCommunity is not configured")
     }
 
     protected fun hideNavBar() {

@@ -8,9 +8,9 @@ import nl.tudelft.ipv8.attestation.trustchain.TrustChainCommunity
 import nl.tudelft.ipv8.attestation.trustchain.TrustChainTransaction
 import nl.tudelft.ipv8.util.hexToBytes
 import nl.tudelft.ipv8.util.toHex
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity.Companion.SIGNATURE_AGREEMENT_BLOCK
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity.Companion.SIGNATURE_ASK_BLOCK
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity.Companion.SIGNATURE_AGREEMENT_BLOCK
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity.Companion.SIGNATURE_ASK_BLOCK
 import nl.tudelft.trustchain.liquiditypooling.TrustChainHelper
 import nl.tudelft.trustchain.liquiditypooling.coin.WalletManager
 import nl.tudelft.trustchain.liquiditypooling.coin.WalletManagerAndroid
@@ -124,7 +124,7 @@ class DAOJoinHelper {
         blockData: SWSignatureAskBlockTD,
         signatures: List<String>,
         progressCallback: ((progress: Double) -> Unit)? = null,
-        timeout: Long = CoinCommunity.DEFAULT_BITCOIN_MAX_TIMEOUT
+        timeout: Long = PoolCommunity.DEFAULT_BITCOIN_MAX_TIMEOUT
     ) {
         val oldWalletBlockData = SWJoinBlockTransactionData(walletBlockData)
 
@@ -153,7 +153,7 @@ class DAOJoinHelper {
         }
 
         val transaction = transactionBroadcast.broadcast().get(timeout, TimeUnit.SECONDS)
-        val serializedTransaction = CoinCommunity.getSerializedTransaction(transaction)
+        val serializedTransaction = PoolCommunity.getSerializedTransaction(transaction)
 
         broadcastJoinedSharedWallet(myPeer, oldWalletBlockData, serializedTransaction)
     }

@@ -3,7 +3,7 @@ package nl.tudelft.trustchain.liquiditypooling.sharedWallet
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import nl.tudelft.ipv8.attestation.trustchain.TrustChainTransaction
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity
 
 data class SWTransferFundsAskBlockTD(
     var SW_UNIQUE_ID: String,
@@ -17,7 +17,7 @@ data class SWTransferFundsAskBlockTD(
 )
 
 class SWTransferFundsAskTransactionData(data: JsonObject) : SWBlockTransactionData(
-    data, CoinCommunity.TRANSFER_FUNDS_ASK_BLOCK
+    data, PoolCommunity.TRANSFER_FUNDS_ASK_BLOCK
 ) {
     fun getData(): SWTransferFundsAskBlockTD {
         return Gson().fromJson(getJsonString(), SWTransferFundsAskBlockTD::class.java)

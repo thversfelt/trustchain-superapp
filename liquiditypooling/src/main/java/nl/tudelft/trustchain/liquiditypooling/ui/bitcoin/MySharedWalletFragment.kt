@@ -21,7 +21,7 @@ import nl.tudelft.trustchain.liquiditypooling.ui.BaseFragment
 class MySharedWalletFragment() : BaseFragment(R.layout.fragment_my_shared_wallets) {
 
     private fun initListView() {
-        val sharedWalletBlocks = getCoinCommunity().fetchLatestJoinedSharedWalletBlocks()
+        val sharedWalletBlocks = getPoolCommunity().fetchLatestJoinedSharedWalletBlocks()
         val publicKey = getTrustChainCommunity().myPeer.publicKey.keyToBin().toHex()
         val adaptor =
             SharedWalletListAdapter(this, sharedWalletBlocks, publicKey, "Click to enter wallet")

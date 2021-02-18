@@ -7,7 +7,7 @@ import nl.tudelft.ipv8.attestation.trustchain.TrustChainBlock
 import nl.tudelft.ipv8.attestation.trustchain.TrustChainCommunity
 import nl.tudelft.ipv8.util.hexToBytes
 import nl.tudelft.ipv8.util.toHex
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity
 import nl.tudelft.trustchain.liquiditypooling.TrustChainHelper
 import nl.tudelft.trustchain.liquiditypooling.coin.WalletManagerAndroid
 import nl.tudelft.trustchain.liquiditypooling.sharedWallet.*
@@ -88,7 +88,7 @@ class DAOTransferFundsHelper {
         receiverAddress: String,
         satoshiAmount: Long,
         progressCallback: ((progress: Double) -> Unit)? = null,
-        timeout: Long = CoinCommunity.DEFAULT_BITCOIN_MAX_TIMEOUT
+        timeout: Long = PoolCommunity.DEFAULT_BITCOIN_MAX_TIMEOUT
     ) {
         val walletManager = WalletManagerAndroid.getInstance()
         val bitcoinTransaction =
@@ -112,7 +112,7 @@ class DAOTransferFundsHelper {
         }
 
         val transaction = transactionBroadcast.broadcast().get(timeout, TimeUnit.SECONDS)
-        val serializedTransaction = CoinCommunity.getSerializedTransaction(transaction)
+        val serializedTransaction = PoolCommunity.getSerializedTransaction(transaction)
 
         // Publish the result on trust chain, if no errors were thrown during transaction initialization.
         broadcastTransferFundSuccessful(

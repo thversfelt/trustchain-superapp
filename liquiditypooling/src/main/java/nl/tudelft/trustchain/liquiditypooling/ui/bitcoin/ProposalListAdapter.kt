@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import nl.tudelft.ipv8.attestation.trustchain.TrustChainBlock
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity
 import nl.tudelft.trustchain.liquiditypooling.R
 import nl.tudelft.trustchain.liquiditypooling.sharedWallet.SWSignatureAskTransactionData
 import nl.tudelft.trustchain.liquiditypooling.sharedWallet.SWTransferFundsAskTransactionData
@@ -31,7 +31,7 @@ class ProposalListAdapter(
         val transferReceiver = view.findViewById<TextView>(R.id.transfer_target_tv)
         val transferAmount = view.findViewById<TextView>(R.id.transfer_amount_tv)
 
-        if (block.type == CoinCommunity.TRANSFER_FUNDS_ASK_BLOCK) {
+        if (block.type == PoolCommunity.TRANSFER_FUNDS_ASK_BLOCK) {
             val data = SWTransferFundsAskTransactionData(block.transaction).getData()
             about.text = "Transfer funds request"
             createdAt.text = formatter.format(block.timestamp)
@@ -42,7 +42,7 @@ class ProposalListAdapter(
             transferAmount.text = "${data.SW_TRANSFER_FUNDS_AMOUNT} Satoshi"
         }
 
-        if (block.type == CoinCommunity.SIGNATURE_ASK_BLOCK) {
+        if (block.type == PoolCommunity.SIGNATURE_ASK_BLOCK) {
             val data = SWSignatureAskTransactionData(block.transaction).getData()
             about.text = "Join request"
             createdAt.text = formatter.format(block.timestamp)

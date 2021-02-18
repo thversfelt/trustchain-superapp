@@ -59,7 +59,7 @@ The project and code is split-up into two parts: Trustchain related code (using 
 - `coin` - The Bitcoin related code that deals with the creation, signing, and broadcast of multi-signature wallets.
 - `sharedWallet` - The Trustchain related code that deals with the messages that are present in the protocol.
 - `ui` - The code that handles all UI interaction.
-- `CoinCommunity.kt` -  The code that handles most of the Trustchain part of the protocol and calls the relevant Bitcoin code.
+- `PoolCommunity.kt` -  The code that handles most of the Trustchain part of the protocol and calls the relevant Bitcoin code.
 
 ## Protocol: The DAO Trustchain Communication Protocol
 The communication that a DAO needs is:
@@ -126,7 +126,7 @@ The following section includes the specification of the Trustchain message types
 <details>
   <summary>Click to expand.</summary>
 
-The data is stored as stringified `JSON`. The `JSON` contains data, which is displayed in the tables below. The [Gson](https://github.com/google/gson) library is used for serialization and deserialization. The block `types` are constants defined in `CoinCommunity.kt`. We prefixed the types with v1 such that newer versions can be added in the future (v2, v3, ...).
+The data is stored as stringified `JSON`. The `JSON` contains data, which is displayed in the tables below. The [Gson](https://github.com/google/gson) library is used for serialization and deserialization. The block `types` are constants defined in `PoolCommunity.kt`. We prefixed the types with v1 such that newer versions can be added in the future (v2, v3, ...).
 
 **Declared in: `SWJoinBlockTransactionData.kt`**
 **Type: `v1DAO_JOIN`**

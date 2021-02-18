@@ -4,7 +4,7 @@ import nl.tudelft.ipv8.Peer
 import nl.tudelft.ipv8.android.IPv8Android
 import nl.tudelft.ipv8.attestation.trustchain.TrustChainCommunity
 import nl.tudelft.ipv8.util.toHex
-import nl.tudelft.trustchain.liquiditypooling.CoinCommunity
+import nl.tudelft.trustchain.liquiditypooling.PoolCommunity
 import nl.tudelft.trustchain.liquiditypooling.TrustChainHelper
 import nl.tudelft.trustchain.liquiditypooling.coin.WalletManagerAndroid
 import nl.tudelft.trustchain.liquiditypooling.sharedWallet.SWJoinBlockTransactionData
@@ -39,7 +39,7 @@ class DAOCreateHelper() {
         entranceFee: Long,
         threshold: Int,
         progressCallback: ((progress: Double) -> Unit)? = null,
-        timeout: Long = CoinCommunity.DEFAULT_BITCOIN_MAX_TIMEOUT
+        timeout: Long = PoolCommunity.DEFAULT_BITCOIN_MAX_TIMEOUT
     ) {
         val walletManager = WalletManagerAndroid.getInstance()
         val transactionBroadcast = walletManager.safeCreationAndSendGenesisWallet(
@@ -54,7 +54,7 @@ class DAOCreateHelper() {
 
         // Try to broadcast the bitcoin transaction.
         val transaction = transactionBroadcast.broadcast().get(timeout, TimeUnit.SECONDS)
-        val serializedTransaction = CoinCommunity.getSerializedTransaction(transaction)
+        val serializedTransaction = PoolCommunity.getSerializedTransaction(transaction)
 
         // Broadcast on trust chain if no errors are thrown in the previous step.
         broadcastCreatedSharedWallet(

@@ -56,7 +56,7 @@ class CreateSWFragment() : BaseFragment(R.layout.fragment_create_sw) {
 
         try {
             // Try to create the bitcoin DAO
-            getCoinCommunity().createBitcoinGenesisWallet(
+            getPoolCommunity().createBitcoinGenesisWallet(
                 currentEntranceFee,
                 currentThreshold,
                 ::updateProgressStatus
