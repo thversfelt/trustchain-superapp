@@ -6,9 +6,20 @@ import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.core.Transaction;
 import org.bitcoinj.params.MainNetParams;
 import org.bitcoinj.params.TestNet3Params;
+import nl.tudelft.trustchain.currencyii.coin.CoinUtil.*
 
-class BitcoinUtil implements CoinUtil {
+class BitcoinUtil : CoinUtil {
 
+    /**
+     * Low priority: transaction gets confirmed in 7+ blocks
+     * Medium priority: transaction gets confirmed in 3-6 blocks
+     * High priority: transaction gets confirmed in 1-2 blocks
+     */
+    enum class TxPriority {
+        LOW_PRIORITY,
+        MEDIUM_PRIORITY,
+        HIGH_PRIORITY
+    }
 
     /**
      * Calculates the fee estimates per KB for a given network and transaction priority
@@ -25,7 +36,7 @@ class BitcoinUtil implements CoinUtil {
      */
     fun calculateFeeWithPriority(
         params: NetworkParameters,
-        txPriority: TxPriority = TxPriority.MEDIUM_PRIORITY
+        txPriority: TxPriority
     ): Long {
         val fee: Int = when (params) {
             MainNetParams.get() -> when (txPriority) {
