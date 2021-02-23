@@ -8,7 +8,7 @@ import org.bitcoinj.params.MainNetParams;
 import org.bitcoinj.params.TestNet3Params;
 import nl.tudelft.trustchain.currencyii.coin.CoinUtil.*
 
-class BitcoinUtil : CoinUtil {
+class CoinUtilBitcoin : CoinUtil {
 
     /**
      * Low priority: transaction gets confirmed in 7+ blocks
