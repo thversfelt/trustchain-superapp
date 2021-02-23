@@ -102,6 +102,9 @@ dependencies {
     // BitcoinJ
     implementation 'org.bitcoinj:bitcoinj-core:0.15.7'
 
+    // web3j
+    implementation 'org.web3j:core:4.6.0-android'
+
     // Google Core
 //    implementation "com.google.guava:guava:28.2-android"
 
