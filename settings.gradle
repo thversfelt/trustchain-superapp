@@ -1,3 +1,4 @@
+include ':liquiditypool'
 include ':eurotoken'
 rootProject.name = 'TrustChain'
 
