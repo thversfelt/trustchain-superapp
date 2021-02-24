@@ -1,5 +1,10 @@
 package tudelft.liquiditypool.sharedwallet
 
-class SharedWallet {
+class SharedWallet(key: String) {
 
+    val keys: Array<String> = TODO()
+
+    init {
+        
+    }
 }
