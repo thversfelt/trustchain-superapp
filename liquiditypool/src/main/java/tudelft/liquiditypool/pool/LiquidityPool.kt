@@ -3,9 +3,9 @@ package tudelft.liquiditypool.pool
 import android.util.Log
 import tudelft.liquiditypool.sharedwallet.SharedWallet
 
-class LiquidityPool(sharedWallets: Array<SharedWallet>) {
+class LiquidityPool(sharedWallets: Pair<SharedWallet, SharedWallet>) {
 
-    val sharedWallets: Array<SharedWallet>
+    val sharedWallets: Pair<SharedWallet, SharedWallet>
 
     init {
         Log.i("Pool", "Pool: attempting to start.")
@@ -14,13 +14,13 @@ class LiquidityPool(sharedWallets: Array<SharedWallet>) {
     }
 
     fun join(key: String) {
-        this.sharedWallets[1].join(key)
-        this.sharedWallets[2].join(key)
+        this.sharedWallets.first.join(key)
+        this.sharedWallets.second.join(key)
     }
 
     fun leave(key: String) {
-        this.sharedWallets[1].leave(key)
-        this.sharedWallets[2].leave(key)
+        this.sharedWallets.first.leave(key)
+        this.sharedWallets.second.leave(key)
     }
 
     fun getExchangeRate(): Double {
