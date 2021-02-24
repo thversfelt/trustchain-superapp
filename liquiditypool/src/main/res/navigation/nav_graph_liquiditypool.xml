@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_liquiditypool"
-    app:startDestination="@id/liquidityPoolBaseFragment">
+    app:startDestination="@id/liquidity_pool_fragment_base">
+
     <fragment
-        android:id="@+id/liquidityPoolBaseFragment"
-        android:name="tudelft.liquiditypool.LiquidityPoolBaseFragment"
-        android:label="fragment_base"
-        tools:layout="@layout/fragment_base" />
+        android:id="@+id/liquidity_pool_fragment_base"
+        android:name="tudelft.liquiditypool.ui.LiquidityPoolBaseFragment"
+        android:label=""
+        tools:layout="@layout/liquidity_pool_fragment_base" />
+
 </navigation>
