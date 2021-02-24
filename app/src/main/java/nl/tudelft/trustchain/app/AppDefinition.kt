@@ -15,6 +15,7 @@ import nl.tudelft.trustchain.payloadgenerator.ui.TrustChainPayloadGeneratorActiv
 import nl.tudelft.trustchain.peerchat.PeerChatActivity
 import nl.tudelft.trustchain.trader.ui.TrustChainTraderActivity
 import nl.tudelft.trustchain.voting.VotingActivity
+import tudelft.liquiditypool.LiquidityPoolActivity
 
 enum class AppDefinition(
     @DrawableRes val icon: Int,
@@ -87,5 +88,11 @@ enum class AppDefinition(
         "EuroToken",
         R.color.metallic_gold,
         EuroTokenMainActivity::class.java
+    ),
+    LIQUIDITY_POOL(
+        R.drawable.ic_baseline_euro_symbol_24,
+        "Liquidity Pool",
+        R.color.blue,
+        LiquidityPoolActivity::class.java
     )
 }
