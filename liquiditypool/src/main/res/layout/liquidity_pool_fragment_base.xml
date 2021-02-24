@@ -25,7 +25,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:layout_weight="0.7"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.6"
                 android:text="Available pools"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -44,8 +45,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:background="#ECF0F1"
             android:orientation="horizontal">
 
@@ -61,10 +61,10 @@
                 android:layout_weight="0.5"
                 android:gravity="center_vertical"
                 android:text="Super Happy Pool"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/join_new_pool_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
@@ -74,12 +74,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/create_new_pool_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
