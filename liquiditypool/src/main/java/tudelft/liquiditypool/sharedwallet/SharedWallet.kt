@@ -1,6 +1,8 @@
 package tudelft.liquiditypool.sharedwallet
 
-class SharedWallet(key: String) {
+import tudelft.liquiditypool.coin.Coin
+
+class SharedWallet(coin: Coin, key: String) {
 
     val keys: Array<String> = TODO()
 
