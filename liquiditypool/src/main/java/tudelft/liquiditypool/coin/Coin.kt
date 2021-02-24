@@ -2,7 +2,7 @@ package tudelft.liquiditypool.coin
 
 interface Coin {
     fun generateKeyPair() : Pair<String, String>
-    fun sendFunds(destination: String, amount: Double)
+    fun sendFunds(destination: String, amount: Double) : Boolean
 
     /**
      * @param txHash hash of transaction to validate
