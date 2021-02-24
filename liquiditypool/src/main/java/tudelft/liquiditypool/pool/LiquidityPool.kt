@@ -24,7 +24,7 @@ class LiquidityPool(sharedWallets: Array<SharedWallet>) {
     }
 
     fun getExchangeRate(): Double {
-
+        return 69.69
     }
 
     fun swap(index: Int, value: Double) { // the parameters refer to the user's offer; index is which coin he/she submits and value indicates how much
