@@ -4,7 +4,7 @@
 
     <application>
         <activity
-            android:name=".LiquidityPoolActivity"
+            android:name=".LiquidityPoolMainActivity"
             android:label="@string/title_activity_main" />
     </application>
 
